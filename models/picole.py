@@ -11,7 +11,8 @@ from models.conservante import Conservante
 from models.aditivo_nutritivo import AditivoNutritivo
 
 
-ingredientes_picole = sa.Table('ingredientes_picole',
+ingredientes_picole = sa.Table(
+    'ingredientes_picole',
     ModelBase.metadata,
     sa.Column('id_ingrediente', sa.BigInteger, sa.ForeignKey('ingredientes.id')),
     sa.Column('id_picole', sa.BigInteger, sa.ForeignKey('picoles.id'))
@@ -44,12 +45,11 @@ class Picole(ModelBase):
     id_tipo_embalagem: int = sa.Column(sa.BigInteger, sa.ForeignKey('tipos_embalagem.id'))
     tipo_embalagem: TipoEmbalagem = relationship('TipoEmbalagem', lazy='joined')
     
-    id_tipo_Picole: int = sa.Column(sa.BigInteger, sa.ForeignKey('picoles.id'))
+    id_tipo_picole: int = sa.Column(sa.BigInteger, sa.ForeignKey('tipos_picole.id'))
     tipo_picole: TipoPicole = relationship('TipoPicole', lazy='joined')
 
-    ingredientes: List[Ingrediente] = relationship('Lote', secondary=ingredientes_picole, backref='ingredientes', lazy='dynamic')
+    ingredientes: List[Ingrediente] = relationship('Ingrediente', secondary=ingredientes_picole, backref='ingredientes', lazy='dynamic')
     conservantes: Optional[List[Conservante]] = relationship('Conservante', secondary=conservantes_picole, backref='conservantes', lazy='dynamic')
-    aditivos_nutritivos: Optional[List[AditivoNutritivo]] = relationship('AditivoNutrivo', secondary=aditivos_nutritivos_picole, backref='aditivos_nutritivos', lazy='dynamic')
+    aditivos_nutritivos: Optional[List[AditivoNutritivo]] = relationship('AditivoNutritivo', secondary=aditivos_nutritivos_picole, backref='aditivos_nutritivos', lazy='dynamic')
 
-    def __repr__(self) -> str:
-        return f'<Sabor: {self.sabor.nome}> <Preço: {self.preco}'
+    
