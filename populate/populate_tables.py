@@ -1,6 +1,4 @@
 from random import randint
-from conf.db_session import create_session
-from insert_main import insert_aditivo_nutritivo
 from utils.dados import alfabeto
 from models.aditivo_nutritivo import AditivoNutritivo
 from models.conservante import Conservante
@@ -12,6 +10,7 @@ from models.tipo_picole import TipoPicole
 from models.lote import Lote
 from models.picole import Picole
 from models.nota_fiscal import NotaFiscal
+from conf.db_session import create_session
 
 
 
