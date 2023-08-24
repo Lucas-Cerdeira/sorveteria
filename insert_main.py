@@ -183,10 +183,10 @@ def insert_picole() -> Picole:
     return picole
 
 if __name__=='__main__':
-    #an = insert_aditivo_nutritivo()
-    #print(an)
-    #print(an.id)
-    #print(an.nome)
+    an = insert_aditivo_nutritivo()
+    print(an)
+    print(an.id)
+    print(an.nome)
 
     #sabor = insert_sabor()
     #print(sabor)
